@@ -30,7 +30,16 @@ function App() {
           <ul className="list-unstyled">
             {backlogTasks.map((task) => (
               <li key={task.id} className="my-4">
-                <strong>{task.title}</strong> <span>({task.state})</span>
+                <strong>{task.title}</strong>{" "}
+                <span
+                  className={`badge ${
+                    task.state === "backlog"
+                      ? "ms-1 p-2 rounded-0 bg-warning"
+                      : "ms-1 p-2 rounded-0 bg-danger"
+                  }`}
+                >
+                  {task.state}
+                </span>
                 <div>Priority: {task.priority}</div>
                 <div>Estimated Time: {task.estimatedTime} min</div>
               </li>
@@ -46,7 +55,10 @@ function App() {
           <ul className="list-unstyled">
             {completedTasks.map((task) => (
               <li key={task.id} className="my-4">
-                <strong>{task.title}</strong> <span>({task.state})</span>
+                <strong>{task.title}</strong>{" "}
+                <span className="badge ms-1 bg-success p-2 rounded-0">
+                  {task.state}
+                </span>
                 <div>Priority: {task.priority}</div>
                 <div>Estimated Time: {task.estimatedTime} min</div>
               </li>
